@@ -25,6 +25,6 @@ namespace Competicoes.Models
         [StringLength(2, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
         public string Sigla { get; set; }
 
-        public virtual Pais Pais { get; set; }
+        public virtual Pais Pais { get; set; }        
     }
 }
