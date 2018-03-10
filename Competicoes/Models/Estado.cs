@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace Competicoes.Models
 {
     [Table("Estados")]
-    public class Estado
+    public class Estado : IEntity
     {
         [Key]
         public Guid EstadoId { get; set; }

@@ -1,6 +1,7 @@
 ﻿using Competicoes.Controllers;
 using Competicoes.Data;
 using Competicoes.Models;
+using Competicoes.UnitTests.Infraestrutura;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -31,7 +32,7 @@ namespace Competicoes.UnitTests.Controllers
 
                 Assert.IsAssignableFrom<IEnumerable<Pais>>(result);
                 Assert.True(result.Count() == await context.Paises.CountAsync());
-                Assert.Equal(pais.PaisId, paisResult.PaisId);
+                Assert.Equal(pais.PaisId, paisResult.PaisId);               
             }
         }
 

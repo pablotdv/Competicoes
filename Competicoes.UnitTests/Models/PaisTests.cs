@@ -1,4 +1,5 @@
 ﻿using Competicoes.Models;
+using Competicoes.UnitTests.Infraestrutura;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +21,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = "BR",
             };
 
-            var result = ValidateModel(pais);
+            var result = pais.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo País é obrigatório", result.First().ErrorMessage);
@@ -36,7 +37,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = "BR",
             };
 
-            var result = ValidateModel(pais);
+            var result = pais.ValidateModel();
             Assert.True(result.Count == 1);
             Assert.Equal("O campo País deve ser uma string com um comprimento máximo de 200", result.First().ErrorMessage);
 
@@ -52,7 +53,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = "",
             };
 
-            var result = ValidateModel(pais);
+            var result = pais.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Sigla é obrigatório", result.First().ErrorMessage);
@@ -67,7 +68,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = new string('*', 4),
             };
 
-            var result = ValidateModel(pais);
+            var result = pais.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Sigla deve ser uma string com um comprimento máximo de 3", result.First().ErrorMessage);
@@ -83,14 +84,6 @@ namespace Competicoes.UnitTests.Models
             };
 
             Assert.Equal(Guid.Empty, pais.PaisId);
-        }
-
-        private IList<ValidationResult> ValidateModel(object model)
-        {
-            var validationResults = new List<ValidationResult>();
-            var ctx = new ValidationContext(model, null, null);
-            Validator.TryValidateObject(model, ctx, validationResults, true);
-            return validationResults;
         }
     }
 }

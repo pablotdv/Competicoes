@@ -1,4 +1,5 @@
 ﻿using Competicoes.Models;
+using Competicoes.UnitTests.Infraestrutura;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -20,7 +21,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = "RS"
             };
 
-            var result = ValidateModel(estado);
+            var result = estado.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Estado é obrigatório", result.First().ErrorMessage);
@@ -36,7 +37,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = "RS"
             };
 
-            var result = ValidateModel(estado);
+            var result = estado.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Estado deve ser uma string com um comprimento máximo de 200",
@@ -53,7 +54,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = ""
             };
 
-            var result = ValidateModel(estado);
+            var result = estado.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Sigla é obrigatório", result.First().ErrorMessage);
@@ -69,7 +70,7 @@ namespace Competicoes.UnitTests.Models
                 Sigla = new string('*', 3)
             };
 
-            var result = ValidateModel(estado);
+            var result = estado.ValidateModel();
 
             Assert.True(result.Count == 1);
             Assert.Equal("O campo Sigla deve ser uma string com um comprimento máximo de 2",
@@ -86,14 +87,6 @@ namespace Competicoes.UnitTests.Models
             };
 
             Assert.Equal(Guid.Empty, estado.EstadoId);
-        }
-
-        private IList<ValidationResult> ValidateModel(object model)
-        {
-            var validationResults = new List<ValidationResult>();
-            var ctx = new ValidationContext(model, null, null);
-            Validator.TryValidateObject(model, ctx, validationResults, true);
-            return validationResults;
-        }
+        }        
     }
 }
