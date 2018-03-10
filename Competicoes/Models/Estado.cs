@@ -17,12 +17,12 @@ namespace Competicoes.Models
         public Guid PaisId { get; set; }
 
         [Required]
-        [StringLength(200, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
+        [StringLength(200)]
         [Display(Name = "Estado")]
         public string Nome { get; set; }
 
         [Required]
-        [StringLength(2, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
+        [StringLength(2)]
         public string Sigla { get; set; }
 
         public virtual Pais Pais { get; set; }        

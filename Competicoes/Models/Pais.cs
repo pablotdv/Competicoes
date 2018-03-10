@@ -14,11 +14,11 @@ namespace Competicoes.Models
 
         [Required]
         [Display(Name = "País")]
-        [StringLength(200, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
+        [StringLength(200)]
         public string Nome { get; set; }
 
         [Required]
-        [StringLength(3, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
+        [StringLength(3)]
         public string Sigla { get; set; }
 
         [InverseProperty(nameof(Estado.Pais))]
