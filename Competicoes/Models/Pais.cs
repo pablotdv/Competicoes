@@ -12,12 +12,12 @@ namespace Competicoes.Models
     {
         public Guid PaisId { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [Required]
         [Display(Name = "País")]
         [StringLength(200, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
         public string Nome { get; set; }
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
+        [Required]
         [StringLength(3, ErrorMessage = "O campo {0} deve ser uma string com um comprimento máximo de {1}")]
         public string Sigla { get; set; }
 
