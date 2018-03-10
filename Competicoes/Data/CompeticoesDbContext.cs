@@ -16,5 +16,7 @@ namespace Competicoes.Data
         }
 
         public DbSet<Pais> Paises { get; set; }
+
+        public DbSet<Estado> Estados { get; set; }
     }
 }
