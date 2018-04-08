@@ -25,6 +25,9 @@ namespace Competicoes.Models
         [StringLength(2)]
         public string Sigla { get; set; }
 
-        public virtual Pais Pais { get; set; }        
+        public virtual Pais Pais { get; set; }  
+        
+        [InverseProperty(nameof(Cidade.Estado))]
+        public ICollection<Cidade> Cidades { get; set; }
     }
 }
