@@ -18,7 +18,7 @@ namespace Competicoes.Models
         public Guid EstadoId { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [StringLength(200)]
         [Display(Name = "Cidade")]
         public string Nome { get; set; }
 
